@@ -5,7 +5,8 @@ import { ref } from 'vue';
 import MiddlePoint from '@/components/MiddlePoint.vue';
 
 const numberA = ref(0);
-const numberB = ref(0);
+const numberB = ref(1);
+const eps = ref(0.00001)
 </script>
 
 <template>
@@ -19,19 +20,22 @@ const numberB = ref(0);
 
 			<label for="b">B</label>
 			<input id="b" type="number" v-model="numberB" />
+
+			<label for="eps">Погрешность</label>
+			<input id="eps" type="number" v-model="eps" />
 		</div>
 
 		<div class="function">
-			<DichotomyFunction :number-a="numberA" :number-b="numberB" />
-			<GoldenRatioFunction :number-a="numberA" :number-b="numberB" />
-			<MiddlePoint :number-a="numberA" :number-b="numberB" />
+			<DichotomyFunction :number-a="numberA" :number-b="numberB" :eps="eps"/>
+			<GoldenRatioFunction :number-a="numberA" :number-b="numberB" :eps="eps"/>
+			<MiddlePoint :number-a="numberA" :number-b="numberB" :eps="eps"/>
 		</div>
 	</div>
 </template>
 
 <style scoped>
 input {
-	width: 50px;
+	width: 120px;
 	text-align: center;
 }
 

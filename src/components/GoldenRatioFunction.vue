@@ -14,6 +14,7 @@ import { fun } from '@/func';
 const props = defineProps<{
 	numberA: number;
 	numberB: number;
+	eps: number;
 }>();
 
 const phi = (1 + Math.sqrt(5)) / 2;
@@ -22,14 +23,18 @@ const count = ref(0);
 const goldenResult = ref(0);
 
 watchEffect(() => {
-	if (props.numberA !== undefined && props.numberB !== undefined) {
-		goldenResult.value = goldenRatio(props.numberA, props.numberB);
+	if (isNaN(props.numberA) && isNaN(props.numberB) && isNaN(props.eps)) {
+		return;
 	}
+	if (props.eps <= 0) {
+		return;
+	}
+	goldenResult.value = goldenRatio(props.numberA, props.numberB, props.eps);
 });
 
-function goldenRatio(a: number, b: number) {
+function goldenRatio(a: number, b: number, eps: number) {
 	count.value = 0;
-	while (Math.abs(b - a) > 0.00001) {
+	while (Math.abs(b - a) > eps) {
 		let x1 = b - (b - a) / phi;
 		let x2 = a + (b - a) / phi;
 
