@@ -3,9 +3,10 @@ import DichotomyFunction from '@/components/DichotomyFunction.vue';
 import GoldenRatioFunction from '@/components/GoldenRatioFunction.vue';
 import { ref } from 'vue';
 import MiddlePoint from '@/components/MiddlePoint.vue';
+import SimpleIterations from '@/components/SimpleIterations.vue';
 
-const numberA = ref(0);
-const numberB = ref(1);
+const numberA = ref(-1);
+const numberB = ref(2);
 const eps = ref(0.00001)
 </script>
 
@@ -29,6 +30,7 @@ const eps = ref(0.00001)
 			<DichotomyFunction :number-a="numberA" :number-b="numberB" :eps="eps"/>
 			<GoldenRatioFunction :number-a="numberA" :number-b="numberB" :eps="eps"/>
 			<MiddlePoint :number-a="numberA" :number-b="numberB" :eps="eps"/>
+			<SimpleIterations :eps="eps" :number-a="numberA" :number-b="numberB"/>
 		</div>
 	</div>
 </template>
