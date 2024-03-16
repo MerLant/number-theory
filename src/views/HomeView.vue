@@ -5,6 +5,7 @@ import { ref } from 'vue';
 import MiddlePoint from '@/components/MiddlePoint.vue';
 import SimpleIterations from '@/components/SimpleIterations.vue';
 import HordMethod from '@/components/HordMethod.vue';
+import NewtonRatio from '@/components/NewtonRatio.vue';
 
 const numberA = ref(-1);
 const numberB = ref(2);
@@ -33,6 +34,7 @@ const eps = ref(0.00001)
 			<MiddlePoint :number-a="numberA" :number-b="numberB" :eps="eps"/>
 			<SimpleIterations :eps="eps" :number-a="numberA" :number-b="numberB"/>
 			<HordMethod :eps="eps" :number-a="numberA" :number-b="numberB"/>
+			<NewtonRatio :eps="eps" :number-a="numberA" :number-b="numberB"/>
 		</div>
 	</div>
 </template>
